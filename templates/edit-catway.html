@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier Catway</title>
+    <script src="../public/javascripts/edit-catway.js" defer></script>
+</head>
+<body>
+    <h1>Modifier Catway</h1>
+    <form id="edit-form">
+        <label for="catwayNumber">Catway Number:</label>
+        <input type="text" id="catwayNumber" required>
+        
+        <label for="type">Type:</label>
+        <input type="text" id="type" required>
+        
+        <label for="catwayState">State:</label>
+        <input type="text" id="catwayState" required>
+        
+        <button type="submit">Mettre à jour</button>
+    </form>
+    <a href="/list-catways">Retour à la liste des Catways</a>
+</body>
+</html>
