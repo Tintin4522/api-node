@@ -29,6 +29,10 @@ app.get('/catway-details', (req, res) => {
     res.sendFile(path.join(__dirname, '../templates/catway-details.html'));
 });
 
+app.get('/add-catway', (req, res) => {
+    res.sendFile(path.join(__dirname, '../templates/add-catway.html'));
+})
+
 // lancement du serveur
 app.listen(port, () => console.log("le serveur a démarré au port" + port)
 );
