@@ -18,25 +18,10 @@ app.use('/controllers', express.static(path.join(__dirname, '../controllers')));
 initClientDbConnection();
 
 app.use('/catways', catwayRoutes);
-app.use('/', userRoute);
+app.use('/users', userRoute);
 
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, '../templates/index.html'))
-});
-
-app.post('/login', async (req, res) => {
-    const { email, password } = req.body;
-    try {
-        const user = await User.findOne({ email });
-        if (!user || user.password !== password) {
-            return res.status(401).json({ message: 'Email ou mot de passe incorrect' });
-        }
-
-        const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, { expiresIn: '1h' });
-        res.json({ token });
-    } catch (error) {
-        res.status(500).json({ message: 'Erreur lors de la connexion', error: error.message });
-    }
 });
 
 app.get('/add-user', (req, res) => {
