@@ -8,7 +8,7 @@ document.getElementById('add-catway-form').addEventListener('submit', async func
     };
 
     try {
-        const response = await fetch('http://localhost:8000/catways', {
+        const response = await fetch('http://localhost:8000/catways/catways', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

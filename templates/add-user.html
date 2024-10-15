@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un Utilisateur</title>
+    <script src="../controllers/add-user.js" defer></script>
+</head>
+<body>
+    <h1>Créer un Nouvel Utilisateur</h1>
+    <form id="user-form">
+        <div>
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Créer</button>
+    </form>
+
+</body>
+</html>

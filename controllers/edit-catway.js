@@ -10,7 +10,7 @@ async function fetchCatway() {
     }
 
     try {
-        const response = await fetch(`http://localhost:8000/catways/${catwayId}`);
+        const response = await fetch(`http://localhost:8000/catways/catways/${catwayId}`);
         if (response.ok) {
             const catway = await response.json();
             document.getElementById('catwayNumber').value = catway.catwayNumber;
@@ -35,7 +35,7 @@ async function updateCatway(event) {
     };
 
     try {
-        const response = await fetch(`http://localhost:8000/catways/${catwayId}`, {
+        const response = await fetch(`http://localhost:8000/catways/catways/${catwayId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

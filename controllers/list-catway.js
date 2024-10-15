@@ -1,6 +1,6 @@
 async function fetchCatways() {
     try {
-        const response = await fetch('http://localhost:8000/catways');
+        const response = await fetch('http://localhost:8000/catways/catways');
         if (!response.ok) {
             throw new Error('Erreur lors de la récupération des catways');
         }
@@ -36,7 +36,7 @@ async function fetchCatways() {
                 const confirmDelete = confirm('Êtes-vous sûr de vouloir supprimer ce catway ?');
                 if (confirmDelete) {
                     try {
-                        const response = await fetch(`http://localhost:8000/catways/${catwayId}`, {
+                        const response = await fetch(`http://localhost:8000/catways/catways/${catwayId}`, {
                             method: 'DELETE'
                         });
 
