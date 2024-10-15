@@ -2,7 +2,7 @@ async function fetchCatway() {
     const urlParams = new URLSearchParams(window.location.search);
     const catwayId = urlParams.get('id');
 
-    const response = await fetch(`http://localhost:8000/catways/${catwayId}`);
+    const response = await fetch(`http://localhost:8000/catways/catways/${catwayId}`);
     if (response.ok) {
         const catway = await response.json();
         document.getElementById('catwayNumber').innerText = catway.catwayNumber;

@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/userController');
-const authMiddleware = require('../middleware/authMiddleware');
+const userController = require('../services/users');
 
-router.post('/users', authMiddleware.authenticateToken, userController.createUser);
-router.patch('/users/:id', authMiddleware.authenticateToken, userController.updateUser);
-router.delete('/users/:id', authMiddleware.authenticateToken, userController.deleteUser);
+
+router.post('/users',  userController.createUser);
+router.patch('/users/:id', userController.updateUser);
+router.delete('/users/:id', userController.deleteUser);
 
 
 

@@ -6,6 +6,7 @@ const port = 8000;
 
 const catwayRoutes = require('../routes/route-catway');
 const userRoute = require('../routes/route-users');
+const reservationRoutes = require('../routes/route-reservation');
 
 const app = express();
 
@@ -19,10 +20,7 @@ initClientDbConnection();
 
 app.use('/catways', catwayRoutes);
 app.use('/users', userRoute);
-
-app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, '../templates/index.html'))
-});
+app.use('/catways', reservationRoutes);
 
 app.get('/add-user', (req, res) => {
     res.sendFile(path.join(__dirname, '../templates/add-user.html'))
@@ -43,6 +41,7 @@ app.get('/catway-details', (req, res) => {
 app.get('/add-catway', (req, res) => {
     res.sendFile(path.join(__dirname, '../templates/add-catway.html'));
 })
+
 
 // lancement du serveur
 app.listen(port, () => console.log("le serveur a démarré au port" + port)
