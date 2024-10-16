@@ -1,59 +1,97 @@
+const mongoose = require('mongoose');
 const User = require('../models/user');
-const bcrypt = require('bcrypt'); 
-const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
-// Créer un utilisateur
-const createUser = async (req, res) => {
-    const { name, email, password } = req.body;
+exports.getById = async (req, res) => {
+    const id = req.params.id;
 
     try {
-        const hashedPassword = await bcrypt.hash(password, 10); 
-        const newUser = new User({ name, email, password: hashedPassword });
-        await newUser.save();
-        return { message: 'Utilisateur créé avec succès', user: newUser };
+        // Vérifie si l'ID est valide
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ message: 'Invalid ID format' });
+        }
+
+        // Recherche par _id
+        let user = await User.findById(id);
+
+        if (user) {
+            return res.status(200).json(user);
+        }
+
+        return res.status(404).json({ message: 'user_not_found' });
     } catch (error) {
-        throw new Error(`Erreur lors de la création de l'utilisateur: ${error.message}`);
+        return res.status(500).json({ message: 'Erreur serveur', error });
     }
 };
 
-// Authentifier un utilisateur
-const authenticate = async (email, password) => {
-    const user = await User.findOne({ email });
-    if (!user) {
-        throw new Error('Identifiants invalides');
-    }
+exports.add = async (req, res) => {
+    const { email, password } = req.body;
 
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-        throw new Error('Identifiants invalides');
-    }
+    try {
+        const existingUser = await User.findOne({ email });
 
-    // Générer un token JWT
-    const token = jwt.sign({ id: user._id, email: user.email }, process.env.SECRET_KEY, { expiresIn: '1h' });
-    return token;
+        if (existingUser) {
+            return res.status(400).json({ message: 'L\'email existe déjà.' });
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const newUser = new User({ ...req.body, password: hashedPassword });
+        const savedUser = await newUser.save();
+        return res.status(201).json(savedUser);
+    } catch (error) {
+        return res.status(400).json({ message: 'Erreur lors de l\'ajout de l\'utilisateur', error });
+    }
 };
 
-// Modifier un utilisateur par ID
-const updateUser = async (userId, updateData) => {
-    const updatedUser = await User.findByIdAndUpdate(userId, updateData, { new: true });
-    if (!updatedUser) {
-        throw new Error('Utilisateur non trouvé');
+exports.update = async (req, res) => {
+    const id = req.params.id;
+
+    try {
+        // Vérifie si l'ID est valide
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ message: 'Invalid ID format' });
+        }
+
+        // Mise à jour de l'utilisateur par _id
+        const updatedUser = await User.findByIdAndUpdate(id, req.body, { new: true });
+
+        if (updatedUser) {
+            return res.status(200).json(updatedUser);
+        }
+
+        return res.status(404).json({ message: 'user_not_found' });
+    } catch (error) {
+        return res.status(400).json({ message: 'Erreur lors de la mise à jour de l\'utilisateur', error });
     }
-    return updatedUser;
 };
 
-// Supprimer un utilisateur par ID
-const deleteUser = async (userId) => {
-    const deletedUser = await User.findByIdAndDelete(userId);
-    if (!deletedUser) {
-        throw new Error('Utilisateur non trouvé');
+exports.getAll = async (req, res) => {
+    try {
+        const users = await User.find();
+        return res.status(200).json(users);
+    } catch (error) {
+        return res.status(500).json({ message: 'Erreur lors de la récupération des utilisateurs', error });
     }
-    return deletedUser;
 };
 
-module.exports = {
-    createUser,
-    authenticate,
-    updateUser,
-    deleteUser
+exports.deleteById = async (req, res) => {
+    const id = req.params.id;
+
+    try {
+        // Vérifie si l'ID est valide
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ message: 'Invalid ID format' });
+        }
+
+        // Suppression par _id
+        const deletedUser = await User.findByIdAndDelete(id);
+
+        if (deletedUser) {
+            return res.status(200).json({ message: 'Utilisateur supprimé avec succès' });
+        }
+
+        return res.status(404).json({ message: 'user_not_found' });
+    } catch (error) {
+        return res.status(500).json({ message: 'Erreur lors de la suppression de l\'utilisateur', error });
+    }
 };

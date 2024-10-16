@@ -4,7 +4,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
 
-const mongodb = require('./db/mongo');
+const mongodb = require('./config/db');
 
 mongodb.initClientDbConnection();
 

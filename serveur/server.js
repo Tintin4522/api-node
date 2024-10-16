@@ -21,6 +21,7 @@ initClientDbConnection();
 app.use('/catways', catwayRoutes);
 app.use('/users', userRoute);
 app.use('/catways', reservationRoutes);
+app.use('/auth', userRoute);
 
 app.get('/add-user', (req, res) => {
     res.sendFile(path.join(__dirname, '../templates/add-user.html'))
