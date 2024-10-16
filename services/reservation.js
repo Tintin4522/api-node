@@ -1,63 +1,91 @@
+const mongoose = require('mongoose');
 const Reservation = require('../models/reservation');
 
-// Récupérer toutes les réservations
-const getAllReservations = async () => {
-    try {
-        return await Reservation.find();
-    } catch (error) {
-        throw new Error(`Erreur lors de la récupération des réservations : ${error.message}`);
-    }
-};
+exports.getById = async (req, res) => {
+    const id = req.params.reservationId;
 
-// Récupérer une réservation d'un catway
-const getReservationById = async (catwayId, reservationId) => {
     try {
-        const reservation = await Reservation.findOne({
-            _id: reservationId,
-            catwayId: catwayId,
-        });
-        if (!reservation) {
-            throw new Error('Réservation non trouvée');
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ message: 'Invalid ID format' });
         }
-        return reservation;
-    } catch (error) {
-        throw new Error(`Erreur lors de la récupération de la réservation : ${error.message}`);
-    }
-};
 
-// Créer une nouvelle réservation pour un catway
-const createReservation = async (catwayId, reservationData) => {
-    const reservation = new Reservation({
-        ...reservationData,
-        catwayId: catwayId,
-    });
+        const reservation = await Reservation.findById(id).populate('catwayId');
 
-    try {
-        return await reservation.save();
-    } catch (error) {
-        throw new Error(`Erreur lors de la création de la réservation : ${error.message}`);
-    }
-};
-
-// Supprimer une réservation d'un catway
-const deleteReservation = async (catwayId, reservationId) => {
-    try {
-        const deletedReservation = await Reservation.findOneAndDelete({
-            _id: reservationId,
-            catwayId: catwayId,
-        });
-        if (!deletedReservation) {
-            throw new Error('Réservation non trouvée');
+        if (reservation) {
+            return res.status(200).json(reservation);
         }
-        return { message: 'Réservation supprimée avec succès' };
+
+        return res.status(404).json({ message: 'reservation_not_found' });
     } catch (error) {
-        throw new Error(`Erreur lors de la suppression de la réservation : ${error.message}`);
+        return res.status(500).json({ message: 'Erreur serveur', error });
     }
 };
 
-module.exports = {
-    getAllReservations,
-    getReservationById,
-    createReservation,
-    deleteReservation,
+exports.add = async (req, res) => {
+    const { catwayNumber, clientName, boatName, checkIn, checkOut, catwayId } = req.body;
+
+    try {
+        const newReservation = new Reservation({
+            catwayNumber,
+            clientName,
+            boatName,
+            checkIn,
+            checkOut,
+            catwayId
+        });
+
+        const savedReservation = await newReservation.save();
+        return res.status(201).json(savedReservation);
+    } catch (error) {
+        return res.status(400).json({ message: 'Erreur lors de l\'ajout de la réservation', error });
+    }
+};
+
+exports.update = async (req, res) => {
+    const id = req.params.reservationId;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ message: 'Invalid ID format' });
+        }
+
+        const updatedReservation = await Reservation.findByIdAndUpdate(id, req.body, { new: true }).populate('catwayId');
+
+        if (updatedReservation) {
+            return res.status(200).json(updatedReservation);
+        }
+
+        return res.status(404).json({ message: 'reservation_not_found' });
+    } catch (error) {
+        return res.status(400).json({ message: 'Erreur lors de la mise à jour de la réservation', error });
+    }
+};
+
+exports.getAll = async (req, res) => {
+    try {
+        const reservations = await Reservation.find().populate('catwayId');
+        return res.status(200).json(reservations);
+    } catch (error) {
+        return res.status(500).json({ message: 'Erreur lors de la récupération des réservations', error });
+    }
+};
+
+exports.deleteById = async (req, res) => {
+    const id = req.params.reservationId;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ message: 'Invalid ID format' });
+        }
+
+        const deletedReservation = await Reservation.findByIdAndDelete(id);
+
+        if (deletedReservation) {
+            return res.status(200).json({ message: 'Réservation supprimée avec succès' });
+        }
+
+        return res.status(404).json({ message: 'reservation_not_found' });
+    } catch (error) {
+        return res.status(500).json({ message: 'Erreur lors de la suppression de la réservation', error });
+    }
 };

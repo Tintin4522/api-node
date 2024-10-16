@@ -20,8 +20,19 @@ initClientDbConnection();
 
 app.use('/catways', catwayRoutes);
 app.use('/users', userRoute);
-app.use('/catways', reservationRoutes);
-app.use('/auth', userRoute);
+app.use('/', reservationRoutes);
+
+app.get('/menu', (req, res) => {
+    res.sendFile(path.join(__dirname, '../templates/menuapi.html'))
+})
+
+app.get('/list-user', (req, res) => {
+    res.sendFile(path.join(__dirname, '../templates/list-users.html'))
+})
+
+app.get('/edit-user', (req, res) => {
+    res.sendFile(path.join(__dirname, '../templates/edit-user.html'))
+})
 
 app.get('/add-user', (req, res) => {
     res.sendFile(path.join(__dirname, '../templates/add-user.html'))
