@@ -16,6 +16,7 @@ async function fetchUsers() {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${user.name}</td>
+                <td>${user.firstname}</td>
                 <td>${user.email}</td>
                 <td>
                     <a href="/edit-user?id=${user._id}">Modifier</a>

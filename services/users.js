@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 exports.getById = async (req, res) => {
     const id = req.params.id;
@@ -25,7 +26,7 @@ exports.getById = async (req, res) => {
 };
 
 exports.add = async (req, res) => {
-    const { email, password } = req.body;
+    const { name, firstname, email, password } = req.body;
 
     try {
         const existingUser = await User.findOne({ email });
@@ -35,7 +36,12 @@ exports.add = async (req, res) => {
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = new User({ ...req.body, password: hashedPassword });
+        const newUser = new User({ 
+            name,
+            firstname,
+            email,
+            password: hashedPassword 
+        });
         const savedUser = await newUser.save();
         return res.status(201).json(savedUser);
     } catch (error) {
@@ -93,5 +99,41 @@ exports.deleteById = async (req, res) => {
         return res.status(404).json({ message: 'user_not_found' });
     } catch (error) {
         return res.status(500).json({ message: 'Erreur lors de la suppression de l\'utilisateur', error });
+    }
+};
+
+exports.login = async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        console.log('Tentative de connexion avec', email);
+
+        // Vérifie si l'email est fourni
+        if (!email) {
+            return res.status(400).json({ message: 'Email requis' });
+        }
+
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ message: 'Utilisateur non trouvé' });
+        }
+
+        // Comparaison du mot de passe haché
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) {
+            return res.status(401).json({ message: 'Mot de passe incorrect' });
+        }
+
+        // Création du token
+        const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, { expiresIn: '1h' });
+
+        // Dépose le token dans un cookie
+        res.cookie('token', token, { httpOnly: true, maxAge: 3600000 });
+
+        return res.status(200).json({ message: 'Connexion réussie' });
+    } catch (error) {
+        console.error('Erreur lors de la connexion:', error);
+        return res.status(500).json({ message: 'Erreur serveur', error });
     }
 };

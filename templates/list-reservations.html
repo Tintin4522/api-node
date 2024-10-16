@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Réservations</title>
+    <script src="../controllers/list-reservation.js" defer></script> 
+</head>
+<body>
+    <h1>Liste des Réservations</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Numéro de Catway</th>
+                <th>Nom du Client</th>
+                <th>Nom du Bateau</th>
+                <th>Date d'entrée</th>
+                <th>Date de sortie</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="reservation-table-body">
+            <!-- Les réservations seront insérées ici -->
+        </tbody>
+    </table>
+    <a href="/add-reservation" class="btn">Ajouter une Réservation</a><br>
+    <a href="/menu" class="btn">Retour au Menu</a>
+</body>
+</html>

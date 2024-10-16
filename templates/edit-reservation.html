@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier Réservation</title>
+    <script src="/controllers/edit-reservation.js" defer></script>
+</head>
+<body>
+    <h1>Modifier Réservation</h1>
+    <form id="edit-form">
+        <label for="catwayNumber">Catway Number:</label>
+        <input type="text" id="catwayNumber" required>
+        
+        <label for="clientName">Nom du Client:</label>
+        <input type="text" id="clientName" required>
+        
+        <label for="boatName">Nom du Bateau:</label>
+        <input type="text" id="boatName" required>
+        
+        <label for="checkIn">Date d'entrée:</label>
+        <input type="date" id="checkIn" required>
+        
+        <label for="checkOut">Date de sortie:</label>
+        <input type="date" id="checkOut" required>
+        
+        <button type="submit">Mettre à jour</button>
+    </form>
+    <a href="/list-reservations">Retour à la liste des Réservations</a>
+</body>
+</html>
