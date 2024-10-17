@@ -1,6 +1,7 @@
 {
   "name": "api",
   "version": "1.0.0",
+  "description": "API du port de plaisance Russell",
   "private": true,
   "scripts": {
     "start": "env-cmd -f .env nodemon ./bin/www",

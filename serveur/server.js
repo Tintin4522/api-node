@@ -1,8 +1,9 @@
 const express = require("express");
 const cors = require('cors');
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
 const path = require('path');
 const { initClientDbConnection } = require("../config/db");
+const { runTests } = require('../test/runtest');
 const port = 8000;
 
 const catwayRoutes = require('../routes/route-catway');
@@ -78,6 +79,7 @@ app.get('/add-reservation', auth, (req, res) => {
 app.get('/reservation-details', auth, (req, res) => {
     res.sendFile(path.join(__dirname, '../templates/reservation-details.html'));
 })
+
 
 // lancement du serveur
 app.listen(port, () => console.log("le serveur a démarré au port" + port)
