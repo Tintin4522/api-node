@@ -3,7 +3,6 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const { initClientDbConnection } = require("../config/db");
-const { runTests } = require('../test/runtest');
 const port = 8000;
 
 const catwayRoutes = require('../routes/route-catway');
