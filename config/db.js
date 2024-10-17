@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const clientOptions = {
-    dbName : 'russell'
-}
+    dbName: 'russell' 
+};
 
 exports.initClientDbConnection = async () => {
     try {
@@ -13,5 +13,3 @@ exports.initClientDbConnection = async () => {
         throw error; 
     }
 };
-
-

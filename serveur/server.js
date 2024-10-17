@@ -82,3 +82,5 @@ app.get('/reservation-details', auth, (req, res) => {
 // lancement du serveur
 app.listen(port, () => console.log("le serveur a démarré au port" + port)
 );
+
+module.exports = app;

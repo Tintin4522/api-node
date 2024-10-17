@@ -106,8 +106,6 @@ exports.login = async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        console.log('Tentative de connexion avec', email);
-
         // Vérifie si l'email est fourni
         if (!email) {
             return res.status(400).json({ message: 'Email requis' });

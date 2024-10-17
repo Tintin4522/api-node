@@ -2,7 +2,7 @@ document.getElementById('logoutBtn').addEventListener('click', async () => {
     try {
         const response = await fetch('http://localhost:8000/users/logout', {
             method: 'POST',
-            credentials: 'include' // Pour inclure le cookie
+            credentials: 'include' 
         });
 
         if (response.ok) {
