@@ -30,5 +30,8 @@
     "mocha": "^10.7.3",
     "mongodb-memory-server": "^10.1.2",
     "supertest": "^7.0.0"
+  },
+  "engines": {
+    "node": "20.17.0"
   }
 }

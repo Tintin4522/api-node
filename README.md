@@ -25,6 +25,10 @@ Bienvenu l'api du port de plaisance de Russell qui permet la gestion du port:
 
         npm install (depuis la racine du projet)
 
+3 - Lancement des tests :
+
+        npm test
+
 -------------------------------------------------------------
 
 Après avoir installé le projet, vous pouvez lancer l'application en excutant la commande suivante :
