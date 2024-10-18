@@ -31,6 +31,8 @@ Bienvenu l'api du port de plaisance de Russell qui permet la gestion du port:
 
 -------------------------------------------------------------
 
+### DEMARRAGE DE L'APPLICATION EN LOCAL
+
 Après avoir installé le projet, vous pouvez lancer l'application en excutant la commande suivante :
 
         npm run server
@@ -41,7 +43,7 @@ Une fois la commande lancer, rendez-vous dans votre navigateur à l'adresse suiv
 
 -------------------------------------------------------------
 
-### CONNECTION A L'API
+#### CONNECTION A L'API
 
 Identifiants de connection :
 
