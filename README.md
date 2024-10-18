@@ -1,7 +1,7 @@
 # API PORT DE PLAISANCE RUSSELL
 
 
-Bienvenu l'api du port de plaisance de Russell qui permet la gestion du port:
+Bienvenue sur l'api du port de plaisance de Russell qui permet la gestion du port:
 
         1   -   Création / Gestion / Suppression d'utilisateur
 
