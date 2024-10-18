@@ -2,9 +2,12 @@
 
 
 Bienvenu l'api du port de plaisance de Russell qui permet la gestion du port:
-    1   -   Création / Gestion / Suppression d'utilisateur
-    2   -   Consultation / Ajout / Modification / Suppression de Catway
-    3   -   Consultation / Ajout / Modification / Suppression de Réservations
+
+        1   -   Création / Gestion / Suppression d'utilisateur
+
+        2   -   Consultation / Ajout / Modification / Suppression de Catway
+
+        3   -   Consultation / Ajout / Modification / Suppression de Réservations
 
 -------------------------------------------------------------
 
@@ -37,7 +40,11 @@ Une fois la commande lancer, rendez-vous dans votre navigateur à l'adresse suiv
 ### CONNECTION A L'API
 
 Identifiants de connection :
-        #   Email : correction@test.fr
-        ##   Mot de Passe : correction
+
+        Email :
+        correction@test.fr
+
+        Mot de Passe : 
+        correction
 
 -------------------------------------------------------------
