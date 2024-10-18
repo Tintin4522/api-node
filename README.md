@@ -36,7 +36,7 @@ Une fois la commande lancer, rendez-vous dans votre navigateur à l'adresse suiv
 
 ### CONNECTION A L'API
 
-Identifiants de connection 
+Identifiants de connection :
         -   Email : correction@test.fr
         -   Mot de Passe : correction
 
