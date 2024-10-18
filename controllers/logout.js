@@ -6,7 +6,7 @@ document.getElementById('logoutBtn').addEventListener('click', async () => {
         });
 
         if (response.ok) {
-            window.location.href = '/login';
+            window.location.href = '/';
         } else {
             alert('Erreur lors de la déconnexion');
         }

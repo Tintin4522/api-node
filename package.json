@@ -8,7 +8,8 @@
     "dev": "env-cmd -f .env.dev nodemon ./bin/www",
     "prod": "env-cmd -f .env.prod nodemon ./bin/www",
     "server": "env-cmd -f .env nodemon ./serveur/server.js",
-    "test": "env-cmd -f .env mocha --exit"
+    "test": "env-cmd -f .env mocha --exit",
+    "doc": "jsdoc -c jsdoc.json"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -25,6 +26,7 @@
     "chai": "^4.3.4",
     "chai-http": "^4.3.0",
     "env-cmd": "^10.1.0",
+    "jsdoc": "^4.0.3",
     "mocha": "^10.7.3",
     "mongodb-memory-server": "^10.1.2",
     "supertest": "^7.0.0"

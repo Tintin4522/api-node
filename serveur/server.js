@@ -17,6 +17,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use('/public', express.static(path.join(__dirname, '../public')));
 app.use('/controllers', express.static(path.join(__dirname, '../controllers')));
+app.use('/docs', express.static(path.join(__dirname, 'docs')));
 
 // connexion à la BDD
 initClientDbConnection();
@@ -25,10 +26,27 @@ app.use('/catways', catwayRoutes);
 app.use('/users', userRoute);
 app.use('/reservations', reservationRoutes);
 
+
 // Routes publiques
-app.get('/login', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../templates/index.html'))
 })
+
+app.get('/doc', (req, res) => {
+    res.sendFile(path.join(__dirname, '../docs/index.html'))
+})
+
+app.get('/user.js', (req, res) => {
+    res.sendFile(path.join(__dirname, '../docs/users.js.html')); 
+});
+
+app.get('/catway.js', (req, res) => {
+    res.sendFile(path.join(__dirname, '../docs/catway.js.html')); 
+});
+
+app.get('/reservation.js', (req, res) => {
+    res.sendFile(path.join(__dirname, '../docs/reservation.js.html')); 
+});
 
 // Routes sécurisées
 app.get('/menu', auth, (req, res) => {
