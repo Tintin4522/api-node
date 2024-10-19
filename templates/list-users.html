@@ -5,21 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Utilisateurs</title>
     <script src="../controllers/userController.js" defer></script> 
+    <link rel="stylesheet" href="../public/stylesheets/list-users.css">
 </head>
 <body>
     <h1>Liste des Utilisateurs</h1>
     <table>
         <thead>
             <tr>
-                <th>Nom d'utilisateur</th>
+                <th>Nom</th>
+                <th>Prénom</th>
                 <th>Email</th>
+                <th>Options</th>
             </tr>
         </thead>
         <tbody id="user-table-body">
             <!-- Les utilisateurs seront insérés ici -->
         </tbody>
     </table>
-    <a href="/add-user" class="btn">Ajouter un Utilisateur</a><br>
-    <a href="/menu" class="btn">retour au menu</a>
+    <div class="button-container">
+        <a href="/add-user" class="btn">Ajouter un Utilisateur</a>
+        <a href="/menu" class="btn btn-retour">Retour au Menu</a>
+    </div>
 </body>
 </html>

@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Détails Catway</title>
     <script src="/controllers/catway-details.js" defer></script>
+    <link rel="stylesheet" href="/public/stylesheets/catway-details.css">
 </head>
 <body>
-    <h1>Détails Catway</h1>
-    <p><strong>Catway Number:</strong> <span id="catwayNumber"></span></p>
-    <p><strong>Type:</strong> <span id="type"></span></p>
-    <p><strong>State:</strong> <span id="catwayState"></span></p>
-    <a href="/list-catways">Retour à la liste des Catways</a>
+    <div class="menu-container">
+        <h1>Détails Catway</h1>
+        <p class="details"><strong>Catway Number:</strong> <span id="catwayNumber"></span></p>
+        <p class="details"><strong>Type:</strong> <span id="type"></span></p>
+        <p class="details"><strong>State:</strong> <span id="catwayState"></span></p>
+        <div class="button-container">
+            <a href="/list-catways" class="btn">Retour à la liste des Catways</a>
+        </div>
+    </div>
 </body>
 </html>

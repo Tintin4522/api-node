@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Détails Réservation</title>
     <script src="/controllers/reservation-details.js" defer></script>
+    <link rel="stylesheet" href="/public/stylesheets/reservation-details.css">
 </head>
 <body>
-    <h1>Détails de la Réservation</h1>
-    <p><strong>Catway Number:</strong> <span id="catwayNumber"></span></p>
-    <p><strong>Nom du Client:</strong> <span id="clientName"></span></p>
-    <p><strong>Nom du Bateau:</strong> <span id="boatName"></span></p>
-    <p><strong>Date d'Arrivée:</strong> <span id="checkIn"></span></p>
-    <p><strong>Date de Départ:</strong> <span id="checkOut"></span></p>
-    <a href="/list-reservations">Retour à la liste des Réservations</a>
+    <div class="menu-container">
+        <h1>Détails de la Réservation</h1>
+        <p class="details"><strong>Catway Number:</strong> <span id="catwayNumber"></span></p>
+        <p class="details"><strong>Nom du Client:</strong> <span id="clientName"></span></p>
+        <p class="details"><strong>Nom du Bateau:</strong> <span id="boatName"></span></p>
+        <p class="details"><strong>Date d'Arrivée:</strong> <span id="checkIn"></span></p>
+        <p class="details"><strong>Date de Départ:</strong> <span id="checkOut"></span></p>
+        <div class="button-container">
+            <a href="/list-reservations" class="btn">Retour à la liste des Réservations</a>
+        </div>
+    </div>
 </body>
 </html>

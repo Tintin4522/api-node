@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f3e9; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px; 
+}
+
+table {
+    border-collapse: collapse;
+    margin: 20px 0; 
+    width: 80%;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ccc;
+}
+
+th {
+    background-color: #e0e0e0;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none; 
+    color: #007bff; 
+    margin-right: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.delete-button {
+    background-color: #ffffff;
+    border: 2px solid #007bff;
+    color: #007bff;
+    padding: 8px 12px;
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.button-container {
+    margin-top: 20px;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+
+.btn {
+    text-decoration: none;
+    background-color: white;
+    border: 1px solid #007bff;
+    color: #007bff;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-align: center;
+    width: 200px;
+    display: block;
+}
+
+.btn:hover {
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-retour {
+    text-decoration: none;
+    color: red;
+    border-color: red;
+}
+
+.btn-retour:hover {
+    text-decoration: none;
+    background-color: red;
+    color: white;
+}

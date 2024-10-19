@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des Réservations</title>
     <script src="../controllers/list-reservation.js" defer></script> 
+    <link rel="stylesheet" href="../public/stylesheets/list-reservation.css"
 </head>
 <body>
     <h1>Liste des Réservations</h1>
@@ -23,7 +24,9 @@
             <!-- Les réservations seront insérées ici -->
         </tbody>
     </table>
-    <a href="/add-reservation" class="btn">Ajouter une Réservation</a><br>
-    <a href="/menu" class="btn">Retour au Menu</a>
+    <div class="button-container">
+        <a href="/add-reservation" class="btn">Ajouter une Réservation</a>
+        <a href="/menu" class="btn btn-retour">Retour au Menu</a>
+    </div>
 </body>
 </html>

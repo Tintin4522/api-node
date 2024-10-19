@@ -5,25 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier un Utilisateur</title>
     <script src="../controllers/edit-user.js" defer></script>
+    <link rel="stylesheet" href="../public/stylesheets/edit-user.css">
 </head>
-<body>
-    <h1>Modifier l'Utilisateur</h1>
-    <form id="edit-form">
-        <div>
-            <label for="name">Nom :</label>
-            <input type="text" id="name" name="name" required>
+<body>    
+    <div class="menu-container">
+        <h1>Modifier l'Utilisateur</h1>
+        <form id="edit-form">
+            <div class="form-group"> 
+                <label for="name">Nom :</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group"> 
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group"> 
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password">
+                <small>Laissez vide si vous ne souhaitez pas modifier le mot de passe.</small>
+            </div>
+            <button type="submit">Mettre à jour</button>
+        </form>
+        <div class="button-container">
+            <a href="/list-user" class="btn">Retour à la liste des utilisateurs</a>
         </div>
-        <div>
-            <label for="email">Email :</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div>
-            <label for="password">Mot de passe :</label>
-            <input type="password" id="password" name="password">
-            <small>Laissez vide si vous ne souhaitez pas modifier le mot de passe.</small>
-        </div>
-        <button type="submit">Mettre à jour</button>
-    </form>
-    <a href="/list-user">Retour à la liste des utilisateurs</a>
+    </div>
 </body>
 </html>

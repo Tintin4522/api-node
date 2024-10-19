@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f4; 
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 20px 0; 
+    width: 80%;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ccc;
+}
+
+th {
+    background-color: #e0e0e0;
+    font-weight: bold;
+}
+
+td a {
+    text-decoration: none; 
+    color: #007bff; 
+}
+
+td button {
+    background-color: white;
+    color: #007bff;
+    border: 1px solid #007bff;
+    padding: 5px 10px;
+    border-radius: 5px; 
+    cursor: pointer;
+}
+
+td button:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.button-container {
+    margin-top: 20px;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn {
+    text-decoration: none;
+    background-color: white;
+    border: 1px solid #007bff;
+    color: #007bff;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-align: center;
+    width: 200px;
+    display: block;
+}
+
+.btn:hover {
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-retour {
+    color: red;
+    border-color: red;
+}
+
+.btn-retour:hover {
+    text-decoration: none;
+    background-color: red;
+    color: white;
+}
