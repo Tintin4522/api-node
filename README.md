@@ -56,3 +56,7 @@ Identifiants de connection :
                 correction
 
 -------------------------------------------------------------
+
+##### CAPTURE D'ECRAN DE L'API
+
+![Getting Started](./public/images/projet.png)
